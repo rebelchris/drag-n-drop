@@ -1,0 +1,94 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+.container {
+    min-height: 100vh;
+    display: flex;
+    padding: 1rem;
+}
+.container .col {
+    padding-right: 0.5rem;
+    padding-left: 0.5rem;
+}
+.container .col-3 {
+    flex-basis: 25%;
+}
+.container .col-9 {
+    flex-basis: 75%;
+}
+.container .col-9 h3 {
+    text-align: center;
+    margin-bottom: 0.5rem;
+}
+.container .editor-view {
+    border: 2px dotted #efefef;
+    min-height: 400px;
+    width: 100%;
+}
+
+.comp {
+    background: #2a9d8f;
+    color: #fff;
+    height: 50px;
+    margin-bottom: 0.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hidden {
+    display: none;
+}
+
+.actual-comp {
+    position: relative;
+    max-width: 100%;
+}
+.actual-comp-remove {
+    position: absolute;
+    color: red;
+    top: calc(50% - 12px);
+    right: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    pointer-events: all;
+}
+
+/*
+ * These are all the components styled not really important for the actual purpose */
+header {
+    background: #264653;
+    height: 70px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+    padding: 0 1rem;
+}
+header a {
+    color: #fff;
+}
+
+.image {
+    max-width: 100%;
+    border-radius: 5px;
+    border: 5px solid #efefef;
+    margin: 0.5rem 0;
+}
+
+footer {
+    background: #264653;
+    color: #fff;
+    height: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 0.5rem;
+}
+
+.text {
+    margin: 0.5rem;
+}
