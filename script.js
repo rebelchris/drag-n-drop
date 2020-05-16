@@ -1,3 +1,6 @@
+// Global vars
+const dropzone = document.getElementById("dropzone");
+
 function onDragStart(event) {
   event.dataTransfer.setData("text/plain", event.currentTarget.dataset.table);
   event.currentTarget.style.backgroundColor = "#e9c46a";
@@ -14,8 +17,6 @@ function onDragOver(event) {
 function onDrop(event) {
   let id = event.dataTransfer.getData("text");
 
-  const dropzone = document.getElementById("dropzone");
-
   const draggableElement = document.getElementById(id);
   const clone = draggableElement.cloneNode(true);
 
@@ -24,7 +25,36 @@ function onDrop(event) {
   remove.innerHTML = "X";
   clone.appendChild(remove);
 
-  dropzone.appendChild(clone);
+  const dropElementY = event.y;
+
+  // Get all main tables in the dropzone and get those positions based off the y position
+  var compTables = dropzone.querySelectorAll(".actual-comp");
+
+  if (compTables.length >= 1) {
+    for (i = 0; i < compTables.length; i++) {
+      var compTablesY1 =
+        compTables[i].getBoundingClientRect().y +
+        compTables[i].getBoundingClientRect().height / 2;
+      var compTablesY2 =
+        compTables[i].getBoundingClientRect().y +
+        compTables[i].getBoundingClientRect().height;
+
+      // Check if dropElementY is smaller then compTablesY1 (insert above)
+      if (dropElementY <= compTablesY1) {
+        compTables[i].parentNode.insertBefore(clone, compTables[i]);
+        break;
+      }
+      // Check if dropElementY is smaller then compTablesY2 (insert below)
+      if (dropElementY <= emailTableY2) {
+        compTables[i].parentNode.insertBefore(clone, compTables[i].nextSibling);
+        break;
+      }
+      dropzone.appendChild(clone);
+    }
+  } else {
+    // No tables yet
+    dropzone.appendChild(clone);
+  }
 
   event.dataTransfer.clearData();
 }
