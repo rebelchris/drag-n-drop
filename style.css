@@ -38,6 +38,15 @@
     justify-content: center;
     align-items: center;
 }
+.comp-remove {
+    position: absolute;
+    color: red;
+    top: calc(50% - 12px);
+    right: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    pointer-events: all;
+}
 
 .hidden {
     display: none;
